@@ -13,29 +13,37 @@ const images = [
   },
 ];
 
+// const galleryList = document.querySelector('.gallery');
+
+// const imageOptions = options => {
+//   return options.map(options => {
+//     const galleryItem = document.createElement('li');
+//     const galleryImage = document.createElement('img');
+//     galleryImage.alt = options.alt;
+//     galleryImage.src = options.url;
+
+//     galleryItem.appendChild(galleryImage);
+//     console.log(galleryItem);
+
+//     return galleryItem;
+//   })
+// }
+
+// const elements = imageOptions(images);
+// galleryList.append(...elements);
+
+// const allImages = document.querySelectorAll('img')
+
+
 const galleryList = document.querySelector('.gallery');
+const elements = images.map(({url, alt}) => `<li class = "gallery__item"><img class = "item__image" src = '${url}' alt = '${alt}'></li>`);
+const galleryImage = document.querySelectorAll('.item__image');
+console.log(elements);
 
-const imageOptions = options => {
-  return options.map(options => {
-    const galleryItem = document.createElement('li');
-    const galleryImage = document.createElement('img');
-    galleryImage.alt = options.alt;
-    galleryImage.src = options.url;
+galleryList.insertAdjacentHTML("beforeend", elements);
 
-    galleryItem.appendChild(galleryImage);
-    console.log(galleryItem);
-
-    return galleryItem;
-  })
-}
-
-const elements = imageOptions(images);
-galleryList.append(...elements);
-
-const allImages = document.querySelectorAll('img')
-
-allImages.width = '300px';
-allImages.height = '300px';
-galleryList.style.display = 'flex';
+galleryImage.style.width = '300px';
+galleryImage.style.height = '300px';
+galleryImage.style.display = 'flex';
 
 

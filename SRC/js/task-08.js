@@ -1,7 +1,5 @@
-const submitForm = document.querySelector('.login-form');
-const submitButton = document.querySelector('button');
-const emailField = document.querySelector('input[type="email"]').value;
-const passwordField = document.querySelector('input[type="password"]').value;
+let submitForm = document.querySelector('.login-form');
+let submitButton = document.querySelector('button');
 
 let user = {
     email: '',
@@ -9,18 +7,23 @@ let user = {
 };
 
 function formReset() {
-    document.querySelector('.login-form').reset()
+    document.querySelector('.login-form').reset();
 };
 
-submitForm.addEventListener('submit', formReset => {
-    if(emailField || passwordField === '') {
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    let emailField = document.querySelector('input[type="email"]').value;
+    let passwordField = document.querySelector('input[type=password]').value;
+
+    if(emailField === "" || passwordField === "") {
         alert('All fields must be filled!!!');
-    } else {
-        user.email = emailField;
-        user.password = passwordField;
-    }
+        return;
+    } 
 
-    return user;
-});
+    user.email = emailField;
+    user.password = passwordField;
 
+    console.log(user);
+    formReset();
+})
 
